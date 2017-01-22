@@ -15,21 +15,21 @@ namespace FigureDrawer
             }
         }
 
-        public void DrawTriangle(int numero)
+        public void DrawTriangle(int number)
         {
-            int numColumnas = CalcularNumeroColumnas(numero);
+            int numColumns = CalculateColumnsNumber(number);
 
-            for (int fila = 1; fila <= numero; fila++)
+            for (int row = 1; row <= number; row++)
             {
-                for (int columna = 1; columna <= numColumnas; columna++)
+                for (int column = 1; column <= numColumns; column++)
                 {
-                    if (CasillaSeraEspacioEnBlanco(fila, columna, numero))
+                    if (PositionShouldBeWhiteSpace(row, column, number))
                     {
                         Console.Write(" ");
                     }
                     else
                     {
-                        Console.Write(fila.ToString());
+                        Console.Write(row.ToString());
                     }
                 }
 
@@ -38,19 +38,19 @@ namespace FigureDrawer
         }
         
 
-        public void DrawTriangleTurbo(int numero) 
+        public void DrawTriangleTurbo(int number) 
         {
-            for (int fila = 1; fila <= numero; fila++)
+            for (int row = 1; row <= number; row++)
             {
-                for (int columna = 1; columna <= numero + fila - 1; columna++)
+                for (int column = 1; column <= number + row - 1; column++)
                 {
-                    if (CasillaSeraEspacioEnBlanco(fila, columna, numero))
+                    if (PositionShouldBeWhiteSpace(row, column, number))
                     {
                         Console.Write(" ");
                     }
                     else
                     {
-                        Console.Write(fila.ToString());
+                        Console.Write(row.ToString());
                     }
                 }
 
@@ -58,14 +58,14 @@ namespace FigureDrawer
             }        
         }
 
-        private bool CasillaSeraEspacioEnBlanco(int fila, int columna, int numero)
+        private bool PositionShouldBeWhiteSpace(int row, int column, int number)
         {
-            return columna <= numero - fila || columna >= numero + fila;
+            return column <= number - row || column >= number + row;
         }
 
-        private int CalcularNumeroColumnas(int numero)
+        private int CalculateColumnsNumber(int number)
         {
-            return numero * 2 - 1;
+            return number * 2 - 1;
         }
 
         private void DrawLine(int row, int number)
